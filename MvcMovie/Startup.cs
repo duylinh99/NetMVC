@@ -29,19 +29,20 @@ namespace MvcMovie
         {
             services.AddControllersWithViews();
 
-          services.AddDbContext<MvcMovieContext>(options =>
+        services.AddDbContext<MvcMovieContext>(options =>
+        options.UseSqlite(Configuration.GetConnectionString("MvcMovieContext")));
         {
-            var connectionString = Configuration.GetConnectionString("MvcMovieContext");
+            // var connectionString = Configuration.GetConnectionString("MvcMovieContext");
 
-            if (Environment.IsDevelopment())
-            {
-                options.UseSqlite(connectionString);
-            }
-            else
-            {
-                options.UseSqlServer(connectionString);
-            }
-        });
+            // if (Environment.IsDevelopment())
+            // {
+            //     options.UseSqlite(connectionString);
+            // }
+            // else
+            // {
+            //     options.UseSqlServer(connectionString);
+            // }
+        };
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
